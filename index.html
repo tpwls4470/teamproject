@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="예술인의 작업이 경력으로 이어지는 곳. 예술인경력정보시스템 홈페이지 리디자인 팀 프로젝트입니다.">
+  <meta name="color-scheme" content="light dark">
+  <title>예술인경력정보시스템 · Teamproject</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/fonts/Pretendard-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header container">
+    <div class="utility"><a href="https://www.kawf.kr/" target="_blank" rel="noopener noreferrer">한국예술인복지재단</a><div><button class="theme-toggle" type="button" aria-label="다크 모드로 전환" aria-pressed="false">다크 모드</button><a data-link="login">로그인</a><a data-link="join">회원가입</a><a href="#help">이용안내</a></div></div>
+    <div class="header-main"><a class="brand" href="./">예술인경력정보시스템</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">메뉴</button><nav id="main-nav" aria-label="주 메뉴"><a href="#hero">예술활동증명</a><a href="#support">복지지원</a><a href="#rights">권익보호</a><a href="#news">알림</a><a data-link="history">나의 활동 정보</a></nav></div>
+  </header>
+  <main id="main" class="container">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="carousel" role="region" aria-roledescription="캐러셀" aria-label="예술이 이어지는 순간들">
+        <div class="carousel-window"><div class="carousel-track" id="artist-track"></div></div>
+        <div class="carousel-bar"><span class="carousel-caption">예술이 이어지는 순간들</span><span class="carousel-fields">조각 · 공예 · 무용 · 첼로 · 가수</span><div class="carousel-controls"><span id="slide-count" aria-hidden="true">01 / 06</span><button type="button" id="previous" aria-label="이전 예술인 사진">‹</button><button type="button" id="autoplay" aria-label="사진 자동 넘김 일시정지" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button><button type="button" id="next" aria-label="다음 예술인 사진">›</button></div></div>
+        <p class="sr-only" id="carousel-announcement" aria-live="polite"></p>
+      </div>
+      <div class="hero-content"><div><h1 id="hero-title">당신의 작업은<br>경력으로 남습니다</h1><p class="hero-description">예술활동증명부터 복지지원, 권익보호까지<br>예술인의 경력과 권리를 한곳에서 관리하세요.</p></div><div class="hero-actions"><a class="button primary" data-link="apply">예술활동증명 신청하기 <span aria-hidden="true">↗</span></a><div class="secondary-actions"><a class="button" data-link="history">신청내역 확인 <span aria-hidden="true">→</span></a><a class="button" data-link="history">확인서 출력 <span aria-hidden="true">→</span></a></div></div></div>
+    </section>
+    <section class="section quick" aria-labelledby="quick-title"><h2 id="quick-title">자주 찾는 서비스</h2><div class="quick-grid">
+      <a data-link="apply"><svg class="icon"><use href="./assets/icons.svg#document"/></svg><span>신청하기</span></a>
+      <a data-link="apply"><svg class="icon"><use href="./assets/icons.svg#renew"/></svg><span>재신청하기</span></a>
+      <a data-link="examples"><svg class="icon"><use href="./assets/icons.svg#folder"/></svg><span>제출자료 예시</span></a>
+      <a data-link="history"><svg class="icon"><use href="./assets/icons.svg#search"/></svg><span>신청내역 확인</span></a>
+      <a data-link="history"><svg class="icon"><use href="./assets/icons.svg#print"/></svg><span>확인서 출력</span></a>
+      <a data-link="contact"><svg class="icon"><use href="./assets/icons.svg#chat"/></svg><span>1:1 문의</span></a>
+    </div></section>
+    <section class="section status" aria-labelledby="status-title"><div class="section-heading"><div><h2 id="status-title">예술활동증명 신청현황</h2><p>전체 접수 현황입니다. 개인의 처리 상태는 신청내역에서 확인하세요.</p></div><span class="meta">실시간 현황 연동 준비 중</span></div><dl class="status-grid"><div><dt>신청완료</dt><dd>—</dd></div><div><dt>접수확인</dt><dd>—</dd></div><div><dt>행정검토중</dt><dd>—</dd></div><div><dt>위원회 검토중</dt><dd>—</dd></div></dl></section>
+    <section class="section guides" id="guides" aria-labelledby="guides-title"><div class="section-heading"><div><h2 id="guides-title">신청 준비, 영상으로 쉽게 알아보세요</h2><p>제도 안내부터 분야별 제출자료까지 필요한 내용을 확인하세요.</p></div><a class="text-link" data-link="guide">전체보기 <span aria-hidden="true">↗</span></a></div><div class="guide-grid">
+      <a class="guide-card" data-link="guide"><div class="video-preview preview-one"><svg class="video-illustration"><use href="./assets/icons.svg#document"/></svg><span class="play" aria-hidden="true">▶</span><span class="video-label">공식 영상 안내</span></div><h3>제도 안내</h3><p>예술활동증명은 무엇인가요?</p></a>
+      <a class="guide-card" data-link="guide"><div class="video-preview preview-two"><svg class="video-illustration"><use href="./assets/icons.svg#search"/></svg><span class="play" aria-hidden="true">▶</span><span class="video-label">공식 영상 안내</span></div><h3>온라인 신청 방법</h3><p>신청 과정을 차근차근 안내합니다.</p></a>
+      <a class="guide-card" data-link="guide"><div class="video-preview preview-three"><svg class="video-illustration"><use href="./assets/icons.svg#folder"/></svg><span class="play" aria-hidden="true">▶</span><span class="video-label">공식 영상 안내</span></div><h3>분야별 제출자료</h3><p>내 분야에 필요한 자료를 확인하세요.</p></a>
+    </div></section>
+    <section class="section support" id="support" aria-labelledby="support-title"><div class="section-heading"><div><h2 id="support-title">예술활동을 이어가는 지원</h2><p>창작의 일상과 권리를 위한 서비스를 안내합니다.</p></div></div><div class="support-grid">
+      <article><div class="card-heading"><svg class="icon"><use href="./assets/icons.svg#care"/></svg><h3>복지지원</h3></div><p>창작과 생활에 필요한<br>지원사업을 확인하세요.</p><a class="text-link" data-link="welfare">안내 보기 <span aria-hidden="true">→</span></a></article>
+      <article><div class="card-heading"><svg class="icon"><use href="./assets/icons.svg#counsel"/></svg><h3>예술인 심리상담</h3></div><p>마음건강을 위한<br>상담 안내를 확인하세요.</p><a class="text-link" data-link="counsel">안내 보기 <span aria-hidden="true">→</span></a></article>
+      <article><div class="card-heading"><svg class="icon"><use href="./assets/icons.svg#shield"/></svg><h3>예술인신문고</h3></div><p>권리침해 신고와 상담<br>지원 정보를 확인하세요.</p><a class="text-link" data-link="report">안내 보기 <span aria-hidden="true">→</span></a></article>
+    </div><div class="rights-grid" id="rights"><a data-link="insurance"><h3>예술인 산재보험</h3><p>가입 및 지원 안내 · 외부 사이트 <span aria-hidden="true">↗</span></p></a><a data-link="rights"><h3>예술인 권리보장</h3><p>권리보호 제도와 지원 정보 · 외부 사이트 <span aria-hidden="true">↗</span></p></a></div></section>
+    <section class="section news-faq" id="news" aria-label="공지사항과 자주 묻는 질문"><div class="news"><div class="section-heading"><h2>공지사항</h2><a class="text-link" data-link="news">전체보기 ↗</a></div><a class="news-row" data-link="apply">예술활동증명 신청 전 확인사항 <span aria-hidden="true">→</span></a><a class="news-row" data-link="examples">분야별 자료 준비 안내 <span aria-hidden="true">→</span></a><a class="news-row" data-link="guide">온라인 신청 이용 안내 <span aria-hidden="true">→</span></a><p class="meta news-note">공지 목록은 시연용 안내입니다.</p></div><div class="faq"><div class="section-heading"><h2>자주 묻는 질문</h2></div><details><summary>어떤 자료를 준비해야 하나요?<span aria-hidden="true">+</span></summary><p>활동 분야와 신청 기준에 따라 필요한 자료가 달라집니다. <a data-link="examples">분야별 제출자료 예시</a>에서 준비할 내용을 확인하세요.</p></details><details><summary>신청 현황은 어디서 확인하나요?<span aria-hidden="true">+</span></summary><p>공식 사이트에 로그인한 뒤 <a data-link="history">신청내역 확인</a>에서 진행 단계와 보완 요청을 확인할 수 있습니다.</p></details><details><summary>확인서는 어디서 출력하나요?<span aria-hidden="true">+</span></summary><p>공식 사이트의 <a data-link="history">신청내역 확인</a>에서 완료된 예술활동증명과 확인서 출력 메뉴를 확인하세요.</p></details></div></section>
+    <section class="section help" id="help" aria-labelledby="help-title"><div><h3 id="help-title">처음 방문하셨나요?</h3><p>기준 확인부터 자료 준비까지 신청 과정을 안내합니다.</p></div><a class="button" data-link="guide">처음 이용 안내 <span aria-hidden="true">→</span></a></section>
+  </main>
+  <footer class="site-footer container"><div><a class="footer-brand" href="https://www.kawf.kr/" target="_blank" rel="noopener noreferrer">한국예술인복지재단</a><p>예술인경력정보시스템</p><small>© Korean Artist Welfare Foundation</small></div><div class="footer-right"><div><a href="https://www.kawf.kr/" target="_blank" rel="noopener noreferrer">재단 공식 사이트 ↗</a><a data-link="official">기존 시스템 ↗</a></div><p class="meta">팀 프로젝트 리디자인 시안 · 공식 운영 사이트가 아닙니다.<br>신청·조회·영상 안내는 공식 사이트로 연결됩니다.<br>히어로 사진은 AI 생성 이미지입니다.</p></div></footer>
+</body>
+</html>
+
