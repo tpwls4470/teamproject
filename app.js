@@ -1,33 +1,25 @@
 'use strict';
-const base = 'https://www.kawfartist.kr';
-const links = {
-  official: `${base}/hkor/userMain/hkorMain.do?sso=ok`,
-  apply: `${base}/views/cms/hkor/cs/cs01002_.jsp`,
-  history: `${base}/hkor/cs/cs01003_/certificationUser/cerRequestList.do`,
-  login: `${base}/hkor/login/member/login.do`,
-  join: `${base}/hkor/userMain/hkorMain.do?sso=ok`,
-  examples: 'https://micc.hkpalette.com/TYP?key=4ydU2LueIL942W%2F19po5bA%3D%3D',
-  contact: `${base}/hkor/userMain/hkorMain.do?sso=ok`,
-  guide: `${base}/views/cms/hkor/cs/cs01006_/cs01006_06.jsp`,
-  welfare: `${base}/views/cms/hkor/ws/ws01.jsp`,
-  counsel: `${base}/views/cms/hkor/no/no06/no06_01.jsp`,
-  report: `${base}/views/cms/hkor/no/no05/no05_01.jsp`,
-  insurance: 'https://wci.kawf.kr/',
-  rights: `${base}/hkor/no/no02/consultUser/list.do`,
-  news: `${base}/hkor/not/not1/bbs/bbsList.do?bbs_cd_n=2`
+const destinations = {
+  official: 'https://www.kawfartist.kr/hkor/userMain/hkorMain.do?sso=ok',
+  apply:'#/cert/apply', history:'#/cert/status',login:'#/guide/login',join:'#/guide/join',
+  examples:'#/cert/criteria', contact:'#/notice/inquiry',guide:'#/cert/videos',welfare:'#/welfare/prep',
+  counsel:'#/rights/psy',report:'#/rights/sinmungo',insurance:'#/welfare/insurance',rights:'#/rights/system',news:'#/notice/list'
 };
 document.querySelectorAll('[data-link]').forEach(link => {
-  link.href = links[link.dataset.link];
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.setAttribute('aria-label', `${link.textContent.trim()} (공식 사이트, 새 창)`);
+  link.href = destinations[link.dataset.link];
+  if (!link.href.includes('#/')) { link.target = '_blank';link.rel='noopener noreferrer'; }
+  else { link.removeAttribute('target');link.removeAttribute('rel'); }
+  link.removeAttribute('aria-label');
 });
 
 const themeButton = document.querySelector('.theme-toggle');
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const dark = theme === 'dark';
-  themeButton.textContent = dark ? '라이트 모드' : '다크 모드';
+  themeButton.innerHTML = dark
+    ? '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>'
+    : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.5 8.5 0 1 0 20.2 15.4Z"/></svg>';
+  themeButton.title = dark ? '라이트 모드로 전환' : '다크 모드로 전환';
   themeButton.setAttribute('aria-pressed', String(dark));
   themeButton.setAttribute('aria-label', dark ? '라이트 모드로 전환' : '다크 모드로 전환');
 }
@@ -45,7 +37,7 @@ menuButton.addEventListener('click', () => {
   const open = nav.classList.toggle('is-open');
   menuButton.setAttribute('aria-expanded', String(open));
 });
-nav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
+nav.addEventListener('click', event => { if (event.target.closest('a') && !event.target.closest('.nav-label')) closeMenu(); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 
 // The approved first five photos stay in this exact order. Add artists here.
@@ -78,7 +70,6 @@ sequence.forEach((artist, index) => {
 const carousel = document.querySelector('.carousel');
 const windowElement = document.querySelector('.carousel-window');
 const playButton = document.querySelector('#autoplay');
-const count = document.querySelector('#slide-count');
 const announcement = document.querySelector('#carousel-announcement');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let cursor = artists.length;
@@ -93,7 +84,6 @@ const activeIndex = () => ((cursor % artists.length) + artists.length) % artists
 function paint(animate = false) {
   track.style.transition = animate && !reducedMotion.matches ? 'transform 900ms cubic-bezier(.25,.8,.25,1)' : 'none';
   track.style.transform = `translateX(${-cursor * windowElement.clientWidth / visibleCount()}px)`;
-  count.textContent = `${String(activeIndex() + 1).padStart(2, '0')} / ${String(artists.length).padStart(2, '0')}`;
 }
 function settle() {
   clearTimeout(settleTimer);
@@ -112,7 +102,7 @@ function step(direction, manual = false) {
 }
 function schedule() {
   clearInterval(timer);
-  if (!paused && !hover && !focused && !document.hidden) timer = setInterval(() => step(1), 4500);
+  if (!paused && !hover && !focused && !document.hidden && !document.querySelector('#home-view').hidden) timer = setInterval(() => step(1), 4500);
 }
 function updatePlayButton() {
   playButton.setAttribute('aria-pressed', String(paused));
@@ -133,3 +123,5 @@ new ResizeObserver(() => { settle(); }).observe(windowElement);
 paint();
 updatePlayButton();
 
+
+window.addEventListener('hashchange', () => setTimeout(schedule, 0));
